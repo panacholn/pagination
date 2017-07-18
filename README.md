@@ -1,0 +1,2 @@
+# pagination
+Friendly SEO pagination
