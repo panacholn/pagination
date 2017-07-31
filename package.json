@@ -1,0 +1,33 @@
+{
+  "name": "pagination",
+  "version": "1.0.0",
+  "description": "Pagination for React",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/panacholn/pagination.git"
+  },
+  "keywords": [
+    "npm",
+    "pagination",
+    "react"
+  ],
+  "author": "Panacholn Pongsamrithphol",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/panacholn/pagination/issues"
+  },
+  "homepage": "https://github.com/panacholn/pagination#readme",
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-router": "~3.0.0"
+  },
+  "devDependencies": {
+    "@kadira/storybook": "^2.21.0"
+  },
+  "scripts": {
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  }
+}
