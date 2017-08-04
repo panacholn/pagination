@@ -1,4 +1,4 @@
 import PaginationBox from './PaginationBox';
-import './index.css';
+import '../styles/index.css';
 
 export default PaginationBox;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import PaginationBox from './PaginationBox';
-import PaginationItem from './PaginationItem';
+import PaginationBox from '../src/PaginationBox';
+import PaginationItem from '../src/PaginationItem';
 
 describe('PaginationBox component', () => {
   let input;

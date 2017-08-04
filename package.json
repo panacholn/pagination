@@ -2,7 +2,7 @@
   "name": "pagination",
   "version": "1.0.0",
   "description": "Pagination for React",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/panacholn/pagination.git"
@@ -28,6 +28,7 @@
   "devDependencies": {
     "@kadira/storybook": "^2.21.0",
     "babel": "^6.23.0",
+    "babel-cli": "^6.24.1",
     "babel-jest": "^20.0.3",
     "babel-polyfill": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
@@ -38,6 +39,7 @@
     "react-test-renderer": "^15.6.1"
   },
   "scripts": {
+    "build": "babel -d lib src",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "test": "jest --coverage --watch"
