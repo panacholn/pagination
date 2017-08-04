@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import PaginationItem from './PaginationItem';
 
@@ -8,14 +9,14 @@ class PaginationBox extends Component {
   };
 
   handlePreviousPage = () => {
-    if (this.state.selected > 0) {
+    if (this.state.selected > 1) {
       return this.state.selected - 1;
     }
     return this.state.selected;
   };
 
   handleNextPage = () => {
-    if (this.state.selected < this.props.pageCount - 1) {
+    if (this.state.selected < this.props.pageCount) {
       return this.state.selected + 1;
     }
     return this.state.selected;
@@ -24,14 +25,14 @@ class PaginationBox extends Component {
   displayFirstButton = () => {
     if (this.props.pageCount > this.props.pageRangeDisplayed && this.state.selected !== 1) {
       return (
-        <li className={this.props.firstClassName}>
-          <Link
-            role="button"
-            to={this.props.genUrl(1)}
-            className={this.props.firstLinkClassName}
-            tabIndex="0"
-          >{this.props.firstLabel}</Link>
-        </li>
+        <PaginationItem
+          url={this.props.genUrl(1)}
+          pageClassName={this.props.firstClassName}
+          pageLinkClassName={this.props.firstLinkClassName}
+          activeClassName={this.props.activeClassName}
+          id={'first-button'}
+          label={this.props.firstLabel}
+        />
       );
     }
     return null;
@@ -40,14 +41,14 @@ class PaginationBox extends Component {
   displayPreviousButton = () => {
     if (this.props.pageCount > this.props.pageRangeDisplayed && this.state.selected !== 1) {
       return (
-        <li className={this.props.previousClassName}>
-          <Link
-            role="button"
-            to={this.props.genUrl(this.handlePreviousPage())}
-            className={this.props.previousLinkClassName}
-            tabIndex="0"
-          >{this.props.previousLabel}</Link>
-        </li>
+        <PaginationItem
+          url={this.props.genUrl(this.handlePreviousPage())}
+          pageClassName={this.props.previousClassName}
+          pageLinkClassName={this.props.previousLinkClassName}
+          activeClassName={this.props.activeClassName}
+          id={'previous-button'}
+          label={this.props.previousLabel}
+        />
       );
     }
     return null;
@@ -56,14 +57,14 @@ class PaginationBox extends Component {
   displayNextButton = () => {
     if (this.props.pageCount > this.props.pageRangeDisplayed && this.state.selected !== this.props.pageCount) {
       return (
-        <li className={this.props.nextClassName}>
-          <Link
-            role="button"
-            to={this.props.genUrl(this.handleNextPage())}
-            className={this.props.nextLinkClassName}
-            tabIndex="0"
-          >{this.props.nextLabel}</Link>
-        </li>
+        <PaginationItem
+          url={this.props.genUrl(this.handleNextPage())}
+          pageClassName={this.props.nextClassName}
+          pageLinkClassName={this.props.nextLinkClassName}
+          activeClassName={this.props.activeClassName}
+          id={'next-button'}
+          label={this.props.nextLabel}
+        />
       );
     }
     return null;
@@ -72,15 +73,14 @@ class PaginationBox extends Component {
   displayLastButton = () => {
     if (this.props.pageCount > this.props.pageRangeDisplayed && this.state.selected !== this.props.pageCount) {
       return (
-        <li className={this.props.lastClassName}>
-          <Link
-            role="button"
-            to={this.props.genUrl(this.props.pageCount)}
-            onClick={this.handleLastPage}
-            className={this.props.lastLinkClassName}
-            tabIndex="0"
-          >{this.props.lastLabel}</Link>
-        </li>
+        <PaginationItem
+          url={this.props.genUrl(this.props.pageCount)}
+          pageClassName={this.props.lastClassName}
+          pageLinkClassName={this.props.lastLinkClassName}
+          activeClassName={this.props.activeClassName}
+          id={'last-button'}
+          label={this.props.lastLabel}
+        />
       );
     }
     return null;
@@ -119,7 +119,8 @@ class PaginationBox extends Component {
         pageClassName={this.props.pageClassName}
         pageLinkClassName={this.props.pageLinkClassName}
         activeClassName={this.props.activeClassName}
-        page={index + 1}
+        id={`page-${index + 1}`}
+        label={`${index + 1}`}
       />);
     }
     return items;

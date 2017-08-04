@@ -1,36 +1,39 @@
-import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const PaginationItem = (props) => {
-  const { pageLinkClassName, activeClassName, url, page, selected } = props;
+  const { pageLinkClassName, activeClassName, url, id, label, selected } = props;
   let { pageClassName } = props;
   if (selected) { pageClassName = `${pageClassName} ${activeClassName}`; }
 
   return (
     <li className={pageClassName}>
       <Link
-        id={`page-${page}`}
+        id={id}
         role="button"
         to={url}
         className={pageLinkClassName}
         tabIndex="0"
-      >{page}</Link>
+      >{label}</Link>
     </li>
   );
 };
 
 PaginationItem.propTypes = {
   url: PropTypes.string.isRequired,
-  selected: PropTypes.bool.isRequired,
+  selected: PropTypes.bool,
   pageClassName: PropTypes.string,
   pageLinkClassName: PropTypes.string,
   activeClassName: PropTypes.string.isRequired,
-  page: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
 };
 
 PaginationItem.defaultProps = {
   pageClassName: 'page',
-  pageLinkClassName: 'pageLink',
+  pageLinkClassName: 'page-link',
+  selected: false,
 };
 
 export default PaginationItem;
