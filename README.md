@@ -1,6 +1,6 @@
 # pagination
 
-[![Coverage Status](https://coveralls.io/repos/github/panacholn/pagination/badge.svg)](https://coveralls.io/github/panacholn/pagination) [![npm version](https://img.shields.io/npm/v/react.svg?style=flat)](https://www.npmjs.com/package/react)
+[![Coverage Status](https://coveralls.io/repos/github/panacholn/pagination/badge.svg)](https://coveralls.io/github/panacholn/pagination) [![npm version](https://img.shields.io/npm/v/tn-pagination.svg?style=flat)](https://www.npmjs.com/package/tn-pagination)
 
 A SEO friendly pagination component for React.
 
