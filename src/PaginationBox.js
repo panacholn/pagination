@@ -4,26 +4,22 @@ import { Link } from 'react-router';
 import PaginationItem from './PaginationItem';
 
 class PaginationBox extends Component {
-  state = {
-    selected: this.props.page,
-  };
-
   handlePreviousPage = () => {
-    if (this.state.selected > 1) {
-      return this.state.selected - 1;
+    if (this.props.page > 1) {
+      return this.props.page - 1;
     }
-    return this.state.selected;
+    return this.props.page;
   };
 
   handleNextPage = () => {
-    if (this.state.selected < this.props.pageCount) {
-      return this.state.selected + 1;
+    if (this.props.page < this.props.pageCount) {
+      return this.props.page + 1;
     }
-    return this.state.selected;
+    return this.props.page;
   };
 
   displayFirstButton = () => {
-    if (this.props.pageCount > this.props.pageRangeDisplayed && this.state.selected !== 1) {
+    if (this.props.pageCount > this.props.pageRangeDisplayed && this.props.page !== 1) {
       return (
         <PaginationItem
           url={this.props.genUrl(1)}
@@ -39,7 +35,7 @@ class PaginationBox extends Component {
   };
 
   displayPreviousButton = () => {
-    if (this.props.pageCount > this.props.pageRangeDisplayed && this.state.selected !== 1) {
+    if (this.props.pageCount > this.props.pageRangeDisplayed && this.props.page !== 1) {
       return (
         <PaginationItem
           url={this.props.genUrl(this.handlePreviousPage())}
@@ -55,7 +51,7 @@ class PaginationBox extends Component {
   };
 
   displayNextButton = () => {
-    if (this.props.pageCount > this.props.pageRangeDisplayed && this.state.selected !== this.props.pageCount) {
+    if (this.props.pageCount > this.props.pageRangeDisplayed && this.props.page !== this.props.pageCount) {
       return (
         <PaginationItem
           url={this.props.genUrl(this.handleNextPage())}
@@ -71,7 +67,7 @@ class PaginationBox extends Component {
   };
 
   displayLastButton = () => {
-    if (this.props.pageCount > this.props.pageRangeDisplayed && this.state.selected !== this.props.pageCount) {
+    if (this.props.pageCount > this.props.pageRangeDisplayed && this.props.page !== this.props.pageCount) {
       return (
         <PaginationItem
           url={this.props.genUrl(this.props.pageCount)}
@@ -93,8 +89,8 @@ class PaginationBox extends Component {
     if (maxPageCount > pageRange) {
       const lowerBound = Math.floor(pageRange / 2);
       const higherBound = pageRange - lowerBound;
-      let relatedLowerBound = (this.state.selected - 1) - lowerBound;
-      let relatedHigherBound = (this.state.selected - 1) + higherBound;
+      let relatedLowerBound = (this.props.page - 1) - lowerBound;
+      let relatedHigherBound = (this.props.page - 1) + higherBound;
       if (relatedLowerBound < 0) {
         relatedHigherBound -= relatedLowerBound;
         relatedLowerBound = 0;
@@ -115,7 +111,7 @@ class PaginationBox extends Component {
       items.push(<PaginationItem
         key={index}
         url={this.props.genUrl(index + 1)}
-        selected={this.state.selected === index + 1}
+        selected={this.props.page === index + 1}
         pageClassName={this.props.pageClassName}
         pageLinkClassName={this.props.pageLinkClassName}
         activeClassName={this.props.activeClassName}

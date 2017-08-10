@@ -1,6 +1,6 @@
 {
   "name": "tn-pagination",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A pagination component for reactjs.",
   "main": "lib/index.js",
   "repository": {
